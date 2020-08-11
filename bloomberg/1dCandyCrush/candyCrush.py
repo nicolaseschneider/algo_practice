@@ -1,5 +1,9 @@
 # not bad, but you shouldve implemented a seperate class for the character
 # should have made a basic stack class, then had the crushStack class inherit from it
+class Character(object):
+  def __init__(self, val):
+    self.val = val
+    self.count = 1
 
 
 class CrushStack():
