@@ -62,7 +62,7 @@ const candyCrush = (board) => {
   });
 
   if (stack[stack.length - 1].count > 2) stack.pop();
-  return stack.reduce((acc, { char, count }) => {
+  return stack.reduce((acc, { count, char }) => {
     let newString = '';
     let i = 0
     while (i < count) {
