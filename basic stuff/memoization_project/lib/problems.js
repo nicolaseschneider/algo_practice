@@ -15,8 +15,12 @@
 // lucasNumberMemo(40)  // => 228826127
 // lucasNumberMemo(41)  // => 370248451
 // lucasNumberMemo(42)  // => 599074578
-function lucasNumberMemo(n, memo = {}) {
-
+function lucasNumberMemo(n, memo = { 0: 2, 1: 1}) {
+    if (memo[n]) return memo[n];
+    const result = lucasNumberMemo(n - 1, memo);
+    const other = memo[n-2]
+    memo[n] = result + other;
+    return memo[n];
 }
 
 
@@ -33,8 +37,22 @@ function lucasNumberMemo(n, memo = {}) {
 // minChange([1, 4, 5], 8))         // => 2, because 4 + 4 = 8
 // minChange([1, 5, 10, 25], 15)    // => 2, because 10 + 5 = 15
 // minChange([1, 5, 10, 25], 100)   // => 4, because 25 + 25 + 25 + 25 = 100
-function minChange(coins, amount, memo = {}) {
 
+// { 1: 10 2: 9 5: 6 }
+// Time complexity
+function minChange(coins, amount, memo = {}) {
+    if (memo[amount]) return memo[amount]
+    if (amount === 0) return 0;
+
+    let numCoins = [];
+    coins.forEach(coin => {
+        if (amount - coin >= 0) {
+            numCoins.push(minChange(coins, amount - coin, memo) + 1);
+        }
+    });
+
+    memo[amount] = Math.min(...numCoins);
+    return memo[amount];
 }
 
 
