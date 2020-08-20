@@ -10,3 +10,5 @@ def numChange(coins, amount):
 
 
 print(numChange([1,2,5], 5))
+
+# any given idex in the array is going to store the number of ways to make change from that index
