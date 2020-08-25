@@ -3,7 +3,7 @@ const vowCheck = (ch) => ('aeiou'.includes(ch.toLowerCase()));
 var reverseVowels = function(str) {
     const split = str.split('');
     const vowPlacement = [];
-    split.forEach((ch, i) => {
+    split.forEach(ch => {
         if (vowCheck(ch)) {
             vowPlacement.unshift(ch);
         }
