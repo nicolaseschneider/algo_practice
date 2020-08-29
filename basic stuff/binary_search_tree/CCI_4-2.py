@@ -14,12 +14,11 @@ def solution(nums):
 
   node = TreeNode(nums[midpoint])
   node.left = solution(nums[:midpoint])
-  node.right = solution(nums[midpoint+1:])
+  node.right = solution(nums[(midpoint + 1):])
   return node
-
 
 nums1 = [1,2,3,4,5,6,7,8,9,10]
 rootNode = solution(nums1)
-print(rootNode)
+
 # tree = BST(rootNode)
 # tree.in_order(rootNode)

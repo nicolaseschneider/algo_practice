@@ -16,3 +16,16 @@ const numChange = (coins, amount, memo = {}) => {
   return total
 }
 console.log(numChange([1,2,5], 5));
+
+const numChangeTable = (coins, amount) => {
+  table = new Array(amount, 0);
+  table[0] = 1;
+  coins.forEach(coin => {
+    let c = coin;
+    while (i < table.length) {
+      table[i] += table[i - coin]
+      table += 1;
+    }
+  });
+  return table[amount];
+}
