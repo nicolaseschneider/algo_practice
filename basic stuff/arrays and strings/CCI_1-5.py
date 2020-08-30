@@ -15,10 +15,24 @@
 from collections import defaultdict
 
 def one_edit(str1, str2):
-
+  num_dif = 0
+  for i in range(0, len(str1)):
+    if str1[i] != str2[i]:
+      num_dif += 1
+      if num_dif > 1:
+        return False
+  return True
 
 def one_insert(shorter, longer):
-  we()
+  j = 0
+  for i in range(0, len(shorter)):
+    if shorter[i] != longer[j]:
+      j += 1
+      if j - 1 != i or shorter[i] != longer[j]:
+        return False
+    j += 1
+  return True
+  
 
 def one_away(str1, str2):
   if len(str1) == len(str2):
@@ -29,6 +43,20 @@ def one_away(str1, str2):
     return one_insert(str2, str1)
   else:
     return False
+
+# Time Complexity:
+# O(n)
+# iterate over the string one time
+# Space Complexity:
+# O(1) we only ever store indexes and number of differences. Num diff will never grow beyond 2;
+
+# this exercise is great in understanding to break up the problem into smaller sub problems
+# you have three checks. Is it easier to write functions for each check?
+# yes. Do you need to call the all checks on each string? No
+# we know that replacement will only work on strings with equal length
+# insertion and deletion will only work on a length diff of 1
+# deletion and insertion are the same thing, just seap the argument order for deletion
+
 
 
   
